@@ -12,16 +12,10 @@ jobs:
     runs-on: [self-hosted]
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
-      with:
-        dotnet-version: 4.0.x
-    - name: Restore dependencies
-      run: dotnet restore
-      shell: cmd
-      working-directory: ./Travel
-    - name: Build
-      run: dotnet build --no-restore
-      shell: cmd
-      working-directory: ./Travel
+    - uses: actions/checkout@v3 
+       
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1
+
+    - name: Setup NuGet
+      uses: NuGet/setup-nuget@v1.0.5
