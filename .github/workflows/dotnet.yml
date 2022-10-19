@@ -29,3 +29,8 @@ jobs:
       run: |
           msbuild.exe Travel.sln /p:platform="Any CPU" /p:configuration="Release"
       working-directory: ./Travel
+      
+    - name: Deploy to IIS
+      shell: cmd
+      run: |
+        xcopy /s /y .\Travel\* D:\publishdata
