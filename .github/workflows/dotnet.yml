@@ -19,3 +19,11 @@ jobs:
 
     - name: Setup NuGet
       uses: NuGet/setup-nuget@v1.0.5
+    - name: Restore Packages
+      run: nuget restore Travel.sln
+      working-directory: ./Travel
+       
+    - name: Build Solution
+      run: |
+          msbuild.exe Travel.sln /p:platform="Any CPU" /p:configuration="Release"
+          working-directory: ./Travel
