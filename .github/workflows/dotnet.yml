@@ -34,7 +34,9 @@ jobs:
     - name: Deploy to IIS
       shell: cmd
       run: |
+        iisreset /stop
         xcopy /s /y .\Travel\* D:\publishdata
+        iisreset /start
         
      #INstall Node on the runner
     - name: Install Node
