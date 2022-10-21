@@ -32,11 +32,11 @@ jobs:
       working-directory: ./Travel
       
     - name: Deploy to IIS
-      shell: cmd
       run: |
         iisreset /stop
         xcopy /s /y .\Travel\* D:\publishdata
-        iisreset /start
+        iisreset /start        
+      shell: cmd
         
      #INstall Node on the runner
     - name: Install Node
