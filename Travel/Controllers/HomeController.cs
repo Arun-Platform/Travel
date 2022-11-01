@@ -8,7 +8,7 @@ namespace Travel.Controllers
 {
     public class HomeController : Controller
     {
-        public AcrtiddonResult Index()
+        public ActionResult Index()
         {
             ViewBag.Title = "Home Page";
 
