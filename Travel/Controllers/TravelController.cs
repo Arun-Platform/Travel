@@ -18,7 +18,7 @@ namespace Travel.Controllers
         // GET api/values/5
         public string Get(int id)
         {
-            return "value";
+            return "value ";
         }
 
         // POST api/values
