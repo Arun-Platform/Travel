@@ -30,12 +30,7 @@ jobs:
           msbuild.exe Travel.sln /p:platform="Any CPU" /p:configuration="Release"
       working-directory: ./Travel
       
-    - name: Deploy to IIS
-      shell: cmd
-      run: |
-        iisreset /stop
-        xcopy /s /y .\Travel\* D:\publishdata
-        iisreset /start   
+  
        #INstall Node on the runner
     - name: Install Node
       uses: actions/setup-node@v1
@@ -61,3 +56,9 @@ jobs:
       run: |
           newman run ./Travel/TestAPi.postman_collection.json
       shell: cmd
+    - name: Deploy to IIS
+      shell: cmd
+      run: |
+        iisreset /stop
+        xcopy /s /y .\Travel\* D:\publishdata
+        iisreset /start 
