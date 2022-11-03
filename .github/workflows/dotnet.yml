@@ -16,9 +16,6 @@ jobs:
       website-path: 'c:\inetpub\wwwroot'
 
    steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-
     - name: exe
       shell: cmd
       run: |
