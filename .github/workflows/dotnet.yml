@@ -16,22 +16,7 @@ jobs:
       website-path: 'c:\inetpub\wwwroot'
 
    steps:
-    - name: exe
-      shell: cmd
-      run: |
-        powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
-        
-    - name: Create Web Site
-      uses: im-open/iis-site-create@v3.0.2
-      with:
-          server: '${{ env.server }}'
-          website-name: '${{ env.website-name }}'
-          app-pool-name: '${{ env.app-pool-name }}'
-          website-host-header: '${{ env.website-host-header}}'
-          website-path: '${{ env.website-path }}'
-          website-cert-path: '${{ env.website-cert-path }}'
-          
-    - name: exe
-      shell: cmd
-      run: |
-        powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+      - name: Install newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
