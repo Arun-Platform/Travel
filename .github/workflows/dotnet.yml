@@ -18,10 +18,12 @@ jobs:
    steps:
     - name: Checkout
       uses: actions/checkout@v3
+
     - name: exe
       shell: cmd
       run: |
         powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+        
     - name: Create Web Site
       uses: im-open/iis-site-create@v3.0.2
       with:
@@ -31,3 +33,8 @@ jobs:
           website-host-header: '${{ env.website-host-header}}'
           website-path: '${{ env.website-path }}'
           website-cert-path: '${{ env.website-cert-path }}'
+          
+    - name: exe
+      shell: cmd
+      run: |
+        powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
