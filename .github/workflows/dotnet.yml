@@ -1,64 +1,33 @@
-name: .NET
-
+name: .NET Create Site
 on:
   push:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
-
+ 
 jobs:
-  build:
+  create-iis-site:
+   runs-on: [self-hosted]
+   env:
+      server: 'iis-server.domain.com'
+      website-name: 'Default Website'
+      apo-pool-name: 'DefaultAppPool'
+      website-host-header: '*.defaultsite.com'
+      website-path: 'c:\inetpub\wwwroot'
 
-    runs-on: [self-hosted]
-
-    steps:
-    - uses: actions/checkout@v3 
-       
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1
-
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
-    - name: Restore Packages
-      run: nuget restore Travel.sln
-      shell: cmd
-      working-directory: ./Travel
-       
-    - name: Build Solution
+   steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: exe
       shell: cmd
       run: |
-          msbuild.exe Travel.sln /p:platform="Any CPU" /p:configuration="Release"
-      working-directory: ./Travel
-      
-  
-       #INstall Node on the runner
-    - name: Install Node
-      uses: actions/setup-node@v1
+        powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+    - name: Create Web Site
+      uses: im-open/iis-site-create@v3.0.2
       with:
-          node-version: "12.x"
-
-
-      # Install the newman command line utility and also install the html extra reporter
-    - name: Install newman
-      run: |
-          npm install -g newman
-          npm install -g newman-reporter-htmlextra
-      shell: cmd
-
-      # Make directory to upload the test results
-    - name: Make Directory for results
-      run: mkdir -p testResults
-      shell: cmd 
-
-
-      # Run the POSTMAN collection
-    - name: Run POSTMAN collection
-      run: |
-          newman run ./Travel/TestAPi.postman_collection.json
-      shell: cmd
-    - name: Deploy to IIS
-      shell: cmd
-      run: |
-        iisreset /stop
-        xcopy /s /y .\Travel\* D:\publishdata
-        iisreset /start 
+          server: '${{ env.server }}'
+          website-name: '${{ env.website-name }}'
+          app-pool-name: '${{ env.app-pool-name }}'
+          website-host-header: '${{ env.website-host-header}}'
+          website-path: '${{ env.website-path }}'
+          website-cert-path: '${{ env.website-cert-path }}'
