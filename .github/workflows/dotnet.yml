@@ -16,8 +16,15 @@ jobs:
       website-path: 'c:\inetpub\wwwroot'
 
    steps:
-      - name: Install newman
-        run: |
-          npm install -g newman
-          npm install -g newman-reporter-htmlextra
-        shell: cmd
+    - name: exe
+      shell: cmd
+      run: |
+        powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
+        
+    - name: Create Web Site 
+      uses: im-open/iis-site-create@v3.0.2    
+          
+    - name: exe
+      shell: cmd
+      run: |
+        powershell Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
