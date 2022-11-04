@@ -54,7 +54,7 @@ jobs:
       # Run the POSTMAN collection
     - name: Run POSTMAN collection
       run: |
-          newman run ./Travel/TestAPi.postman_collection.json
+          newman run ./Travel/TestAPi.postman_collection.json -e ./Travel/Environment.postman_environment.json
       shell: cmd
     - name: Deploy to IIS
       shell: cmd
