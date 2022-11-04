@@ -56,12 +56,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:44336/api/travel",
-					"protocol": "http",
+					"raw": "{{apiurl}}/api/travel",
 					"host": [
-						"localhost"
+						"{{apiurl}}"
 					],
-					"port": "7008",
 					"path": [
 						"api",
 						"travel"
