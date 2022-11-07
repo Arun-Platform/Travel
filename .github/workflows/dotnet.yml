@@ -26,7 +26,7 @@ jobs:
                 $TestSite.Applications["/"].ApplicationPoolName = "DefaultAppPool"
                 Stop-IISCommitDelay
           }
-      shell: pwsh  
+      shell: cmd  
 
     
 
