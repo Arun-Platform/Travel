@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v3 
        
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1
+      shell: cmd  
     - run: |
           $path = "C:\BussinessAPI"
           If(!(test-path -PathType container $path))
@@ -26,7 +26,6 @@ jobs:
                 $TestSite.Applications["/"].ApplicationPoolName = "DefaultAppPool"
                 Stop-IISCommitDelay
           }
-      shell: cmd  
 
     
 
