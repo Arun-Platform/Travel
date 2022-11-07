@@ -16,49 +16,17 @@ jobs:
        
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v1
+    - run: |
+          $path = "C:\BussinessAPI"
+          If(!(test-path -PathType container $path))
+          {
+                New-Item -ItemType Directory -Path $path
+                Start-IISCommitDelay
+                $TestSite = New-IISSite -Name BussinessAPI -BindingInformation "*:8121:" -PhysicalPath "C:\BussinessAPI" -Passthru
+                $TestSite.Applications["/"].ApplicationPoolName = "DefaultAppPool"
+                Stop-IISCommitDelay
+          }
+      shell: pwsh  
 
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
-    - name: Restore Packages
-      run: nuget restore Travel.sln
-      shell: cmd
-      working-directory: ./Travel
-       
-    - name: Build Solution
-      shell: cmd
-      run: |
-          msbuild.exe Travel.sln /p:platform="Any CPU" /p:configuration="Release"
-      working-directory: ./Travel
-      
-  
-       #INstall Node on the runner
-    - name: Install Node
-      uses: actions/setup-node@v1
-      with:
-          node-version: "12.x"
+    
 
-
-      # Install the newman command line utility and also install the html extra reporter
-    - name: Install newman
-      run: |
-          npm install -g newman
-          npm install -g newman-reporter-htmlextra
-      shell: cmd
-
-      # Make directory to upload the test results
-    - name: Make Directory for results
-      run: mkdir -p testResults
-      shell: cmd 
-
-
-      # Run the POSTMAN collection
-    - name: Run POSTMAN collection
-      run: |
-          newman run ./Travel/TestAPi.postman_collection.json -e ./Travel/Environment.postman_environment.json
-      shell: cmd
-    - name: Deploy to IIS
-      shell: cmd
-      run: |
-        iisreset /stop
-        xcopy /s /y .\Travel\* D:\publishdata
-        iisreset /start 
