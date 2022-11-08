@@ -16,7 +16,7 @@ jobs:
        
     - name: Setup MSBuild
       run  : .\Test.ps1    
-          
+      shell: cmd          
 
     
 
