@@ -16,7 +16,7 @@ jobs:
     - name: setexe
       shell: cmd
       run: |
-       Powershell Set-ExecutionPolicy -Scope CurrentUser-ExecutionPolicy Unrestricte -Force
+       Powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricte -Force
        
     - name: Setup MSBuild
       run  : .\Test.ps1    
