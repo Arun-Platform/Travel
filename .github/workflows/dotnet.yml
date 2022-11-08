@@ -13,10 +13,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3 
+    - name: setexe
+      shell: cmd
+      run: |
+       Powershell Set-ExecutionPolicy -Scope CurrentUser-ExecutionPolicy Unrestricte -Force
        
     - name: Setup MSBuild
       run  : .\Test.ps1    
-      shell: pwsh          
 
     
 
