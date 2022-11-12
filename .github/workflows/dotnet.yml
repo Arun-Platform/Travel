@@ -20,7 +20,7 @@ jobs:
        
     - name: Setup MSBuild
       shell: cmd
-      run  : ./Powershell/test.ps1    
+      run  : .\test.ps1    
 
     
 
