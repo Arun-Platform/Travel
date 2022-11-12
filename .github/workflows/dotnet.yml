@@ -18,9 +18,9 @@ jobs:
       run: |
        Powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricte -Force
        
-    - name: Setup MSBuild
-      shell: cmd
-      run  : test.ps1    
+    - name: Setup MSBuild 
+      run  : .\test.ps1   
+      working-directory: ./Travel
 
     
 
