@@ -20,8 +20,8 @@ jobs:
        
     - name: Setup MSBuild 
       run : |
-          powershell.exe -File .\test.ps1
-      working-directory: ./Travel    
+          powershell.exe -File C:\actions-runner\_work\Travel\Travel\test.ps1
+      
 
     
 
