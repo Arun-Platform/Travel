@@ -21,6 +21,7 @@ jobs:
     - name: Setup MSBuild 
       run : |
           powershell.exe -File .\test.ps1
+      working-directory: ./Travel    
 
     
 
