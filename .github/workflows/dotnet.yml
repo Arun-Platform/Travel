@@ -18,7 +18,6 @@ jobs:
       shell: cmd
       run: |
         iisreset /stop
-        xcopy /s /y .\Travel\* C:\BussinessAPI
+        xcopy /s /y C:\actions-runner\_work\Travel\Travel\Travel\* C:\BussinessAPI
         iisreset /start 
-        
-      working-directory: ./Travel
+         
