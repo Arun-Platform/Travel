@@ -24,7 +24,7 @@ jobs:
      - name: setexe
        shell: cmd
        run: |
-        Powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricte -Force
+        Powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricte -Force 
        
      - name: Setup MSBuild 
        run : C:\actions-runner\_work\Travel\Travel\test.ps1
