@@ -1,4 +1,4 @@
-name: .NET
+name: Build
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 
 jobs:
   build:
-
     runs-on: [self-hosted]
 
     steps:
@@ -20,4 +19,10 @@ jobs:
         iisreset /stop
         xcopy /s /y C:\actions-runner\_work\Travel\Travel\Travel\* C:\BussinessAPI
         iisreset /start 
+        
+  ExecuteCVT:
+    
+    name: Trigger CVT
+    uses: ./.github/workflows/cvt.yml
+    
          
