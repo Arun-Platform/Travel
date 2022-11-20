@@ -12,37 +12,13 @@ jobs:
     runs-on: [self-hosted]
 
     steps:
-    - uses: actions/checkout@v3 
-       
-    - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1
-
-    - name: Setup NuGet
-      uses: NuGet/setup-nuget@v1.0.5
-    - name: Restore Packages
-      run: nuget restore Travel.sln
-      shell: cmd
-      working-directory: ./Travel
-       
-    - name: Build Solution
-      shell: cmd
-      run: |
-          msbuild.exe Travel.sln /p:platform="Any CPU" /p:configuration="Release"
-      working-directory: ./Travel
-      
-    - name: setexe
-      shell: cmd
-      run: |
-        Powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricte -Force
-       
-    - name: Setup MSBuild 
-      run : C:\actions-runner\_work\Travel\Travel\Travel\test.ps1
+    - uses: actions/checkout@v3        
 
     - name: Deploy to IIS
       shell: cmd
       run: |
         iisreset /stop
-        xcopy /s /y .\Travel\* D:\publishdata
+        xcopy /s /y .\Travel\* C:\BussinessAPI
         iisreset /start 
         
       working-directory: ./Travel
