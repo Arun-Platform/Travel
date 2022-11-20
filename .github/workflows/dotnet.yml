@@ -36,7 +36,7 @@ jobs:
         Powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricte -Force
        
     - name: Setup MSBuild 
-      run : C:\actions-runner\_work\Travel\Travel\test.ps1
+      run : C:\actions-runner\_work\Travel\Travel\Travel\test.ps1
 
     - name: Deploy to IIS
       shell: cmd
