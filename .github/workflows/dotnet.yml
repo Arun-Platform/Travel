@@ -12,14 +12,23 @@ jobs:
     runs-on: [self-hosted]
 
     steps:
+
+     - name: Setup MSBuild
+       uses: microsoft/setup-msbuild@v1
+    
+     - name: Build Solution
+       shell: cmd
+       run: |
+          msbuild.exe Travel.sln /p:platform="Any CPU" /p:configuration="Release"
+       working-directory: ./Travel
    
-    - name: setexe
-      shell: cmd
-      run: |
-       Powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricte -Force
+     - name: setexe
+       shell: cmd
+       run: |
+        Powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricte -Force
        
-    - name: Setup MSBuild 
-      run : C:\actions-runner\_work\Travel\Travel\test.ps1
+     - name: Setup MSBuild 
+       run : C:\actions-runner\_work\Travel\Travel\test.ps1
       
 
     
