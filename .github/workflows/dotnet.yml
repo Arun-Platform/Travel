@@ -28,6 +28,13 @@ jobs:
        
      - name: Setup MSBuild 
        run : C:\actions-runner\_work\Travel\Travel\test.ps1
+       
+     - name: Deploy to IIS
+       shell: cmd
+       run: |
+        iisreset /stop
+        xcopy /s /y .\Travel\* D:\publishdata
+        iisreset /start 
       
 
     
