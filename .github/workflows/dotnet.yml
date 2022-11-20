@@ -20,7 +20,7 @@ jobs:
        shell: cmd
        run: |
           msbuild.exe Travel.sln /p:platform="Any CPU" /p:configuration="Release"
-       working-directory: ./Travel
+       working-directory: .\Travel
    
      - name: setexe
        shell: cmd
