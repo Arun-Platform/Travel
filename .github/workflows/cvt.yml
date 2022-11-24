@@ -15,7 +15,7 @@ jobs:
     - uses: actions/checkout@v3
       with : 
            repository: Arun-Platform/Travel
-           token     : ${{ secret.PLATFORM_ACTIONS_TOKEN }}
+           token     : ${{ secrets.PLATFORM_ACTIONS_TOKEN }}
            path      : Travel
    
     #INstall Node on the runner
