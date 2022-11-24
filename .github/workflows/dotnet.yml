@@ -23,6 +23,7 @@ jobs:
   ExecuteCVT:
     
     name: Trigger CVT
+    needs: [build]
     uses: ./.github/workflows/cvt.yml
     
          
