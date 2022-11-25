@@ -8,7 +8,19 @@ on:
 
 jobs:
   build:
-    runs-on: [self-hosted]    
+    runs-on: [self-hosted]
+
+    steps:
+    - uses: actions/checkout@v3    
+      with:
+        clean: false
+
+    - name: Deploy to IIS
+      shell: cmd
+      run: |
+        iisreset /stop
+        xcopy /s /y C:\actions-runner\_work\Travel\Travel\Travel\* C:\BussinessAPI
+        iisreset /start 
         
   ExecuteCVT:
     
