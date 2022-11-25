@@ -5,6 +5,10 @@ name: cvt
 
 on:
    workflow_call:
+      secrets: 
+           PLATFORM_ACTIONS_TOKEN :
+                              description: ""
+                              required: true   
 
 jobs:
   build:
