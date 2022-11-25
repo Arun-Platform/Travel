@@ -26,6 +26,6 @@ jobs:
     needs: [build]
     uses: ./.github/workflows/cvt.yml
     secrets :
-      PLATFOR_ACTION_TOKEN : ${{ secrets.PLATFORM_ACTIONS_TOKEN }}
+          PLATFORM_ACTIONS_TOKEN  : ${{ secrets.PLATFORM_ACTIONS_TOKEN }}
     
          
