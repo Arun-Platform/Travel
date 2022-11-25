@@ -11,7 +11,9 @@ jobs:
     runs-on: [self-hosted]
 
     steps:
-    - uses: actions/checkout@v3        
+    - uses: actions/checkout@v3    
+      with:
+        clean: false
 
     - name: Deploy to IIS
       shell: cmd
@@ -23,6 +25,9 @@ jobs:
   ExecuteCVT:
     
     name: Trigger CVT
+    needs: [build]
     uses: ./.github/workflows/cvt.yml
+    secrets :
+          PLATFORM_ACTIONS_TOKEN  : ${{ secrets.PLATFORM_ACTIONS_TOKEN }}
     
          
