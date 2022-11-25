@@ -17,10 +17,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-      with : 
-           repository: Arun-Platform/Travel
-           token     : "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"
-           path      : Travel
    
     #INstall Node on the runner
     - name: Install Node
